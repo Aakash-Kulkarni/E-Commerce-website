@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Your own CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Basic Styles for Product Section */
+        #product1 {
+            padding: 40px 80px;
+            background-color: #f8f8f8;
+        }
+        .pro-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .pro {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+        .pro:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: scale(1.05);
+        }
+        .pro img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .des {
+            margin-top: 15px;
+        }
+        .des span {
+            font-size: 12px;
+            color: #777;
+        }
+        .des h5 {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .star {
+            color: #ff9529;
+        }
+        .star i {
+            margin: 0 1px;
+        }
+        .add-cart {
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            background: #088178;
+            color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        .add-cart:hover {
+            background: #065f59;
+        }
+
+
+/* PAYMENT MODAL */
+    .payment-modal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 3000; }
+    .payment-content { background: white; padding: 2rem; border-radius: 10px; width: 90%; max-width: 400px; text-align: center; }
+    .payment-content button { margin: 0.5rem 0; padding: 1rem; font-size: 1rem; width: 100%; border-radius: 5px; border: none; cursor: pointer; }
+    .payment-content button:hover { background: #f95e00; }
+    .payment-content .selected { background: #fc8019; }
+
+    /* ORDER SUCCESS POPUP */
+    .order-success { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 3000; }
+    .order-success-content { background: white; padding: 2rem; border-radius: 10px; width: 90%; max-width: 400px; text-align: center; }
+    .order-success-content h3 { font-size: 1.5rem; }
+    .order-success-content button { background: #fc8019; color: white; border: none; padding: 0.5rem 1rem; margin-top: 1rem; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+
+<body>
+
+<!-- PRODUCTS SECTION -->
+<section id="product1" class="section-p1">
+    <div class="pro-container">
+
+        <!-- Product 1 -->
+        <div class="pro" onclick="window.location.href='sproduct.html';">
+            <img src="images/products/f1.jpg" alt="">
+            <div class="des">
+                <span>adidas</span>
+                <h5>Sky Blue Full hands</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <h4>$78</h4>
+            </div>
+            <a href="#" onclick="addToCart(event);" class="add-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="pro" onclick="window.location.href='sproduct.html';">
+            <img src="images/products/f2.jpg" alt="">
+            <div class="des">
+                <span>adidas</span>
+                <h5>Stylish Hoodie</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <h4>$85</h4>
+            </div>
+            <a href="#" onclick="addToCart(event);" class="add-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="pro" onclick="window.location.href='sproduct.html';">
+            <img src="images/products/f3.jpg" alt="">
+            <div class="des">
+                <span>adidas</span>
+                <h5>Summer Collection Shirt</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <h4>$90</h4>
+            </div>
+            <a href="#" onclick="addToCart(event);" class="add-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="pro" onclick="window.location.href='sproduct.html';">
+            <img src="images/products/f4.jpg" alt="">
+            <div class="des">
+                <span>adidas</span>
+                <h5>Party Wear Dress</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <h4>$95</h4>
+            </div>
+            <a href="#" onclick="addToCart(event);" class="add-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="pro" onclick="window.location.href='sproduct.html';">
+            <img src="images/products/f5.jpg" alt="">
+            <div class="des">
+                <span>adidas</span>
+                <h5>Denim Jacket</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <h4>$100</h4>
+            </div>
+            <a href="#" onclick="addToCart(event);" class="add-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="pro" onclick="window.location.href='sproduct.html';">
+            <img src="images/products/f6.jpg" alt="">
+            <div class="des">
+                <span>adidas</span>
+                <h5>Comfort Sweatshirt</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <h4>$105</h4>
+            </div>
+            <a href="#" onclick="addToCart(event);" class="add-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="pro" onclick="window.location.href='sproduct.html';">
+            <img src="images/products/f7.jpg" alt="">
+            <div class="des">
+                <span>adidas</span>
+                <h5>Vintage Look Tee</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <h4>$110</h4>
+            </div>
+            <a href="#" onclick="addToCart(event);" class="add-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="pro" onclick="window.location.href='sproduct.html';">
+            <img src="images/products/f8.jpg" alt="">
+            <div class="des">
+                <span>adidas</span>
+                <h5>Elegant Long Shirt</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <h4>$120</h4>
+            </div>
+            <a href="#" onclick="addToCart(event);" class="add-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+<!-- PAYMENT MODAL -->
+<div class="payment-modal" id="payment-modal">
+  <div class="payment-content">
+    <h2>Choose Payment Method</h2>
+    <button onclick="selectPaymentMethod(this)">UPI</button>
+    <button onclick="selectPaymentMethod(this)">Credit Card</button>
+    <button onclick="selectPaymentMethod(this)">Cash on Delivery</button>
+    <button onclick="closeModal('payment-modal')">Close</button>
+  </div>
+</div>
+
+<!-- ORDER SUCCESS POPUP -->
+<div class="order-success" id="order-success">
+  <div class="order-success-content">
+    <h3>Order Successfully Placed!</h3>
+    <p>Your order will be delivered shortly.</p>
+    <button onclick="closeModal('order-success')">Okay</button>
+  </div>
+</div>
+
+    </div>
+</section>
+
+<!-- JS for Cart Button -->
+<script>
+    function addToCart(event) {
+        event.stopPropagation();
+        alert('Item added to cart!');
+    }
+</script>
+
+</body>
+</html>
